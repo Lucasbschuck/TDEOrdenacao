@@ -34,6 +34,8 @@ public class QuickSort {
             vetor[i] = random.nextInt(20000);
         }
 
+        long endTime = System.nanoTime();
+
         System.out.print("\nDesordenado: ");
         for (int num : vetor) {
             System.out.print(num + " ");
@@ -45,7 +47,7 @@ public class QuickSort {
         for (int num : vetor) {
             System.out.print(num + " ");
         }
-        long endTime = System.nanoTime();
+        
         long duration = (endTime - startTime) / 1000000;
 
         System.out.println("\n\nTempo de execucao de insercao: " + duration + " milissegundos");
