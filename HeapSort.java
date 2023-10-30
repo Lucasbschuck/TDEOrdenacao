@@ -1,10 +1,9 @@
 package heapsort;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class HeapSort {
-
+    static int nr_trocas = 0;
     public static void heapify(int arr[], int n, int i) {
         int maior = i;
         int esquerda = 2 * i + 1;
@@ -24,6 +23,8 @@ public class HeapSort {
             arr[maior] = temp;
             heapify(arr, n, maior);
         }
+        nr_trocas += 1;
+        
     }
 
     public static void heapSort(int arr[]) {
@@ -42,18 +43,18 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        long startTime = System.nanoTime();
+        
         Random random = new Random(123456789);
 
-        System.out.print("Tamanho do vetor: ");
-        int tamanho = scanner.nextInt();
+        int tamanho = 10000;
 
         int[] vetor = new int[tamanho];
         for (int i = 0; i < tamanho; i++) {
             vetor[i] = random.nextInt(20000);
         }
 
-        System.out.print("Desordenado: ");
+        System.out.print("\nDesordenado: ");
         for (int num : vetor) {
             System.out.print(num + " ");
         }
@@ -64,7 +65,10 @@ public class HeapSort {
         for (int num : vetor) {
             System.out.print(num + " ");
         }
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime) / 1000000;
 
-        scanner.close();
+        System.out.println("\n\nTempo de execucao de insercao: " + duration + " milissegundos");
+        System.out.print("Numero de trocas: " + nr_trocas + "\n\n");
     }
 }
