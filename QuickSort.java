@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class QuickSort {    
     static int nr_trocas = 0;
+    static int nr_interacao = 0;
 
     public static void insercao(int x[], int n) {
         
@@ -14,12 +15,11 @@ public class QuickSort {
             y = x[k];
             for (i = k - 1; i >= 0 && y < x[i]; i--){
                 x[i + 1] = x[i];
-                nr_trocas += 1;
+                nr_trocas++;
             }
+            nr_interacao++;
             x[i + 1] = y;
         }
-
-        
     } 
 
     public static void main(String[] args) {
@@ -49,6 +49,7 @@ public class QuickSort {
         long duration = (endTime - startTime) / 1000000;
 
         System.out.println("\n\nTempo de execucao de insercao: " + duration + " milissegundos");
-        System.out.print("Numero de trocas: " + nr_trocas + "\n\n");
+        System.out.println("Numero de trocas: " + nr_trocas);
+        System.out.print("Numero de interacoes: " + (nr_interacao+nr_trocas) + "\n\n");
     }        
 }
