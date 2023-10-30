@@ -1,10 +1,7 @@
 
 package mergesort;
 import java.util.Random;
-/**
- *
- * @author lucas
- */
+
 public class MergeSort {
 static int interacao = 1;
 static int troca = 1;
