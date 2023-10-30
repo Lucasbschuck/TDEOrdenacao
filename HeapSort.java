@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class HeapSort {
     static int nr_trocas = 0;
+    static int nr_interacao = 0;
+    
     public static void heapify(int arr[], int n, int i) {
         int maior = i;
         int esquerda = 2 * i + 1;
@@ -11,10 +13,12 @@ public class HeapSort {
 
         if (esquerda < n && arr[esquerda] > arr[maior]) {
             maior = esquerda;
+            nr_trocas++;
         }
 
         if (direita < n && arr[direita] > arr[maior]) {
             maior = direita;
+            nr_trocas++;
         }
 
         if (maior != i) {
@@ -23,7 +27,8 @@ public class HeapSort {
             arr[maior] = temp;
             heapify(arr, n, maior);
         }
-        nr_trocas += 1;
+        nr_interacao++;
+        
         
     }
 
@@ -47,7 +52,7 @@ public class HeapSort {
         
         Random random = new Random(123456789);
 
-        int tamanho = 10000;
+        int tamanho = 50;
 
         int[] vetor = new int[tamanho];
         for (int i = 0; i < tamanho; i++) {
@@ -69,6 +74,7 @@ public class HeapSort {
         long duration = (endTime - startTime) / 1000000;
 
         System.out.println("\n\nTempo de execucao de insercao: " + duration + " milissegundos");
-        System.out.print("Numero de trocas: " + nr_trocas + "\n\n");
+        System.out.println("Numero de trocas: " + nr_trocas);
+        System.out.print("Numero de interacoes: " + (nr_interacao+nr_trocas) + "\n\n");
     }
 }
