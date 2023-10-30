@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class ShellSort {
-
+	static int nr_trocas = 0;
 	static int length(int arr[]) {
 		int count = 0;
 		for (int i : arr) {
@@ -14,7 +14,7 @@ public class ShellSort {
 	}
 
 	public static void shellSort(int[] vetor) {
-		int j, k, increment, y;
+		int j, k, y;
 		int n = length(vetor);
 		int h = 1;
 		while (h <= n / 3) {
@@ -26,15 +26,16 @@ public class ShellSort {
 				for (k = j - h; k >= 0 && y < vetor[k]; k -= h) {
 					vetor[k + h] = vetor[k];
 				}
+				nr_trocas += 1;
 				vetor[k + h] = y;
 			}
 			System.out.print("Incremento " + h + ": ");
-			print(vetor);
 			h = (h - 1) / 3;
 		}
 	}
 
 	private static void print(int[] array) {
+		
 		for (int i : array) {
 			System.out.print(i + " ");
 		}
@@ -42,15 +43,24 @@ public class ShellSort {
 	}
 
 	public static void main(String[] args) {
+        long startTime = System.nanoTime();
 		Random rand = new Random(123456789);
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Tamanho do array: ");
-		int tam = scan.nextInt();
+		int tam = 10000;
 		int array[] = new int[tam];
 
 		for (int i = 0; i < tam; i++) {
 			array[i] = rand.nextInt(20000);
 		}
-		shellSort(array);
+        System.out.print("\nDesordenado: ");
+        print(array);
+        shellSort(array);
+        System.out.print("\nOrdenado: ");
+        print(array);
+		
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime) / 1000000;
+
+        System.out.println("\n\nTempo de execucao de insercao: " + duration + " milissegundos");
+        System.out.print("Numero de trocas: " + nr_trocas + "\n\n");
 	}
 }
