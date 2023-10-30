@@ -12,11 +12,11 @@ public class QuickSort {
 
         for (k = 1; k < n; k++) {
             y = x[k];
-            for (i = k - 1; i >= 0 && y < x[i]; i--)
+            for (i = k - 1; i >= 0 && y < x[i]; i--){
                 x[i + 1] = x[i];
+                nr_trocas += 1;
+            }
             x[i + 1] = y;
-                
-            nr_trocas += 1;
         }
 
         
