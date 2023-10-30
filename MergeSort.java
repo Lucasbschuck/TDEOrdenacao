@@ -1,7 +1,6 @@
 
 package mergesort;
 import java.util.Random;
-import java.util.Scanner;
 /**
  *
  * @author lucas
@@ -72,12 +71,11 @@ public static int[] merge(int vetor[] , int tam) {
 }
 
 public static void main(String[] args) {
+    long startTime = System.nanoTime();
 
-    Scanner scanner = new Scanner(System.in);
     Random random = new Random(123456789);
 
-    System.out.print("Tamanho do vetor: ");
-    int tamanho = scanner.nextInt();
+    int tamanho = 1000;
 
     int[] vetor = new int[tamanho];
     for (int i = 0; i < tamanho; i++) {
@@ -95,8 +93,10 @@ public static void main(String[] args) {
     for (int num : vetor) {
         System.out.print(num + " ");
     }
-    System.out.print("\nTrocas: "+troca);
-    System.out.print("\nInteracao: "+interacao);
-    scanner.close();
+    long endTime = System.nanoTime();
+    long duracao = (endTime - startTime)/ 1000000;
+System.out.println("\n\nTempo de execucao de insercao: " + duracao + " milissegundos");
+        System.out.println("Numero de trocas: " + troca);
+        System.out.print("Numero de interacoes: " + (interacao) + "\n\n");
     }        
 }
