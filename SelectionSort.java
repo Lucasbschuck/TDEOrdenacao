@@ -9,12 +9,12 @@ import java.util.Random;
 
 public class SelectionSort {
     
-    static int nr_trocas = 0;
+    static int troca = 0;
+    static int interacao = 0;
 
 
     public static void main(String[] args) {
         
-     long startTime = System.nanoTime();
         
         Random random = new Random(123456789);
         
@@ -29,27 +29,33 @@ public class SelectionSort {
         for (int num : vetor) {
             System.out.print(num + " ");
         }
+        double startTime = System.nanoTime();
 
         ordenarSelecao(vetor, tamanho);
+        
+        double endTime = System.nanoTime();
 
         System.out.print("\nOrdenado: ");
         for (int num : vetor) {
             System.out.print(num + " ");
         }
-        long endTime = System.nanoTime();
-        long duration = (endTime - startTime) / 1000000;
+        
+        double duration = (endTime - startTime) / 1000000;
 
         System.out.println("\n\nTempo de execucao de insercao: " + duration + " milissegundos");
-        System.out.print("Numero de trocas: " + nr_trocas + "\n\n");
+        System.out.print("Numero de trocas: " + troca + "\n\n");
+        System.out.print("Numero de interacoes: " + (interacao) + "\n\n");
     }
 
     public static void ordenarSelecao(int[] array, int tamanho) {
         for (int i = 0; i < tamanho - 1; i++) {
             int indiceMenor = i;
+            interacao ++;
             for (int j = i + 1; j < tamanho; j++) {
+                interacao ++;
                 if (array[j] < array[indiceMenor]) {
                     indiceMenor = j;
-                    nr_trocas += 1;
+                    troca ++;
 
                 }
             }
