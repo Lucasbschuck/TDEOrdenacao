@@ -16,6 +16,7 @@ public class QuickSort {
             for (i = k - 1; i >= 0 && y < x[i]; i--){
                 x[i + 1] = x[i];
                 nr_trocas++;
+                nr_interacao++;
             }
             nr_interacao++;
             x[i + 1] = y;
@@ -52,6 +53,6 @@ public class QuickSort {
 
         System.out.println("\n\nTempo de execucao de insercao: " + duration + " milissegundos");
         System.out.println("Numero de trocas: " + nr_trocas);
-        System.out.print("Numero de interacoes: " + (nr_interacao+nr_trocas) + "\n\n");
+        System.out.print("Numero de interacoes: " + nr_interacao + "\n\n");
     }        
 }
