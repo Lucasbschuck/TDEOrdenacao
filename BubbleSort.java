@@ -2,21 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-
-
 package bubblesort;
 
 import java.util.Random;
-import java.util.Scanner;
+
 
 public class BubbleSort {
+    
+    static int nr_trocas = 0;
+
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        
+     long startTime = System.nanoTime();
+        
         Random random = new Random(123456789);
-
-        System.out.print("Tamanho do vetor: ");
-        int tamanho = scanner.nextInt();
+        
+        int tamanho = 10000;
 
         int[] vetor = new int[tamanho];
         for (int i = 0; i < tamanho; i++) {
@@ -34,6 +36,11 @@ public class BubbleSort {
         for (int num : vetor) {
             System.out.print(num + " ");
         }
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime) / 1000000;
+
+        System.out.println("\n\nTempo de execucao de insercao: " + duration + " milissegundos");
+        System.out.print("Numero de trocas: " + nr_trocas + "\n\n");
     }
 
     public static void ordenarBubble(int[] array, int tamanho) {
@@ -46,9 +53,13 @@ public class BubbleSort {
                     array[i - 1] = array[i]; 
                     array[i] = temp;
                     trocado = true;
+                   
                 }
             }
             tamanho--;
+            nr_trocas += 1;
         } while (trocado);
+        
     }
+    
 }
