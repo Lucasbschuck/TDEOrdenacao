@@ -3,8 +3,8 @@ package mergesort;
 import java.util.Random;
 
 public class MergeSort {
-static int interacao = 1;
-static int troca = 1;
+static int interacao = 0;
+static int troca = 0;
 public static int[] merge(int vetor[] , int tam) {
     if(tam == 1){interacao++;return vetor;}
     int meio = (tam + 1) / 2;
@@ -31,8 +31,9 @@ public static int[] merge(int vetor[] , int tam) {
         } else {
             vetor[0] = B[0];
             vetor[1] = A[0];
+            troca++;
         }
-        troca++;
+        
         return vetor;
     }
     
@@ -68,11 +69,11 @@ public static int[] merge(int vetor[] , int tam) {
 }
 
 public static void main(String[] args) {
-    long startTime = System.nanoTime();
+    
 
     Random random = new Random(123456789);
 
-    int tamanho = 1000;
+    int tamanho = 50;
 
     int[] vetor = new int[tamanho];
     for (int i = 0; i < tamanho; i++) {
@@ -83,15 +84,15 @@ public static void main(String[] args) {
     for (int num : vetor) {
         System.out.print(num + " ");
     }
-    
+    double startTime = System.nanoTime();
     vetor = merge(vetor, tamanho);
-
+    double endTime = System.nanoTime();
     System.out.print("\nOrdenado: ");
     for (int num : vetor) {
         System.out.print(num + " ");
     }
-    long endTime = System.nanoTime();
-    long duracao = (endTime - startTime)/ 1000000;
+   
+    double duracao = (endTime - startTime)/ 1000000;
 System.out.println("\n\nTempo de execucao de insercao: " + duracao + " milissegundos");
         System.out.println("Numero de trocas: " + troca);
         System.out.print("Numero de interacoes: " + (interacao) + "\n\n");
