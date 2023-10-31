@@ -4,6 +4,7 @@
  */
 package bubblesort;
 
+
 import java.util.Random;
 
 
@@ -54,6 +55,7 @@ public class BubbleSort {
             for (int i = 1; i < tamanho; i++) {
                 interacao ++;
                 if (array[i - 1] > array[i]) {
+                    troca ++;
                     int temp = array[i - 1];
                     array[i - 1] = array[i]; 
                     array[i] = temp;
@@ -62,7 +64,7 @@ public class BubbleSort {
                 }
             }
             tamanho--;
-            troca ++;
+            
         } while (trocado);
         
     }
