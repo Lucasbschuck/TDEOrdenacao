@@ -39,15 +39,15 @@ public class QuickSort {
         for (int num : vetor) {
             System.out.print(num + " ");
         }
-        long startTime = System.nanoTime();
+        double startTime = System.nanoTime();
         quickSort(vetor, tamanho);
-        long endTime = System.nanoTime();
+        double endTime = System.nanoTime();
         System.out.print("\nOrdenado: ");
         for (int num : vetor) {
             System.out.print(num + " ");
         }
         
-        long duration = (endTime - startTime) / 1000000;
+        double duration = (endTime - startTime) / 1000000;
 
         System.out.println("\n\nTempo de execucao de insercao: " + duration + " milissegundos");
         System.out.println("Numero de trocas: " + nr_trocas);
