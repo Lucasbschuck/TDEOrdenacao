@@ -6,7 +6,7 @@ public class QuickSort {
     static int nr_trocas = 0;
     static int nr_interacao = 0;
 
-    public static void insercao(int x[], int n) {
+    public static void quickSort(int x[], int n) {
         
 
         int i, k, y;
@@ -40,7 +40,7 @@ public class QuickSort {
             System.out.print(num + " ");
         }
         long startTime = System.nanoTime();
-        insercao(vetor, tamanho);
+        quickSort(vetor, tamanho);
         long endTime = System.nanoTime();
         System.out.print("\nOrdenado: ");
         for (int num : vetor) {
