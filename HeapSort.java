@@ -47,8 +47,7 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        
+
         Random random = new Random(123456789);
 
         int tamanho = 50;
@@ -58,15 +57,13 @@ public class HeapSort {
             vetor[i] = random.nextInt(20000);
         }
 
-        long endTime = System.nanoTime();
-        
         System.out.print("\nDesordenado: ");
         for (int num : vetor) {
             System.out.print(num + " ");
         }
-
+        long startTime = System.nanoTime();
         heapSort(vetor, tamanho);
-
+        long endTime = System.nanoTime();
         System.out.print("\nOrdenado: ");
         for (int num : vetor) {
             System.out.print(num + " ");
