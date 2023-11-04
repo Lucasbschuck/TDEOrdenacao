@@ -38,7 +38,7 @@ public class HeapSort {
             heapify(arr, tam, i);
         }
 
-        for (int i = n - 1; i > 0; i--) {
+        for (int i = tam - 1; i > 0; i--) {
             int temp = arr[0];
             arr[0] = arr[i];
             arr[i] = temp;
