@@ -6,17 +6,17 @@ public class HeapSort {
     static int nr_trocas = 0;
     static int nr_interacao = 0;
     
-    public static void heapify(int arr[], int n, int i) {
+    public static void heapify(int arr[], int tam, int i) {
         int maior = i;
         int esquerda = 2 * i + 1;
         int direita = 2 * i + 2;
 
-        if (esquerda < n && arr[esquerda] > arr[maior]) {
+        if (esquerda < tam && arr[esquerda] > arr[maior]) {
             maior = esquerda;
             nr_trocas++;
         }
 
-        if (direita < n && arr[direita] > arr[maior]) {
+        if (direita < tam && arr[direita] > arr[maior]) {
             maior = direita;
             nr_trocas++;
         }
@@ -25,18 +25,17 @@ public class HeapSort {
             int temp = arr[i];
             arr[i] = arr[maior];
             arr[maior] = temp;
-            heapify(arr, n, maior);
+            heapify(arr, tam, maior);
         }
         nr_interacao++;
         
         
     }
 
-    public static void heapSort(int arr[]) {
-        int n = arr.length;
+    public static void heapSort(int arr[], int tam) {
 
-        for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(arr, n, i);
+        for (int i = tam / 2 - 1; i >= 0; i--) {
+            heapify(arr, tam, i);
         }
 
         for (int i = n - 1; i > 0; i--) {
@@ -66,7 +65,7 @@ public class HeapSort {
             System.out.print(num + " ");
         }
 
-        heapSort(vetor);
+        heapSort(vetor, tamanho);
 
         System.out.print("\nOrdenado: ");
         for (int num : vetor) {
